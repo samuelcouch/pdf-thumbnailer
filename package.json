@@ -1,22 +1,19 @@
 {
-  "name": "pdf-thumbnailer",
+  "name": "thumbnail-coding-challenge",
   "version": "0.1.0",
   "description": "Lob hiring challenge: Build an API that converts a PDF into an array of thumbnails (one for each page) and then responds with URLs for each generated thumbnail.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [
-    "lob",
-    "pdf",
-    "thumbnail"
-  ],
   "author": "Sam Couch",
   "license": "MIT",
   "dependencies": {
     "gulp": "^3.8.10",
     "gulp-livereload": "^3.5.0",
     "gulp-nodemon": "^1.0.5",
-    "hapi": "^8.1.0"
+    "hapi": "^8.1.0",
+    "joi": "^5.1.0",
+    "open": "0.0.5"
   }
 }
