@@ -1,5 +1,5 @@
 {
-  "name": "thumbnail-coding-challenge",
+  "name": "thumb_coding_challenge",
   "version": "0.1.0",
   "description": "Lob hiring challenge: Build an API that converts a PDF into an array of thumbnails (one for each page) and then responds with URLs for each generated thumbnail.",
   "main": "index.js",
