@@ -1,5 +1,6 @@
-var Joi         = require('joi');
-var controllers = require('./controllers');
+var Joi             = require('joi');
+var spawn           = require('child_process').spawn;
+var uploadHandler   = require('./new').uploadHandler;
 
 //create a routes array to pass the server.
 routes = [
@@ -14,9 +15,7 @@ routes = [
     {
         method: 'POST',
         path: '/upload',
-        handler: function(req, reply) {
-            reply("File uploaded!");
-        },
+        handler: uploadHandler,
         config: {
             payload: {
                 output: 'stream',
@@ -32,6 +31,17 @@ routes = [
                         }).unknown()
                     }).unknown()
                 }
+            }
+        }
+    },
+    {
+        method: 'GET',
+        path: '/public/css/{path*}',
+        handler: {
+            directory: {
+            path: "./../public/css",
+            listing: false,
+            index: false
             }
         }
     }

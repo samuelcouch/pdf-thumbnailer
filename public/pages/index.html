@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html>
+	<head>
+		<link href='public/css/main.css' rel='stylesheet' type='text/css'>
+	</head>
 <body>
 
-<form id="upload_form" action="/upload" method="POST" enctype="multipart/form-data">
-	<label for="uploader">PDF:</label>
-	<input type="file" name="file" id="uploader">
-	<button type="submit">Upload</button>
-</form>
+	<form id="upload_form" action="/upload" method="POST" enctype="multipart/form-data">
+		<label for="uploader">PDF:</label>
+		<input type="file" name="file" id="uploader" class="mdi-file-cloud-upload">
+		<button type="submit">Upload</button>
+	</form>
 
 </body>
 </html>
