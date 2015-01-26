@@ -3,6 +3,7 @@ var nodemon     = require('gulp-nodemon');
 var livereload  = require('gulp-livereload');
 var open        = require('open');
 var config      = require('./assets/config');
+var exec        = require('child_process').exec;
 
 var first = true;
 
@@ -13,6 +14,17 @@ gulp.task('open', function(){
         first = false;
     }
     return;
+});
+
+gulp.task('setup', function(){
+    exec('mkdir -p ./files/thumbs ./files/tmp', function(error, stdout, stderr){
+        if(!error){
+            console.log("Setup complete!");
+        }
+        else{
+            console.log("There was a problem with the setup: %s", stderr);
+        }
+    })
 })
 
 //serve up the webapp with nodemon
