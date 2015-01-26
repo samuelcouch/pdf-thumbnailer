@@ -35,13 +35,24 @@ routes = [
         }
     },
     {
-        method: 'GET',
-        path: '/public/css/{path*}',
+        method: "GET",
+        path: "/public/{path*}",
         handler: {
             directory: {
-            path: "./../public/css",
-            listing: false,
-            index: false
+                path: "./public",
+                listing: false,
+                index: false
+            }
+        }
+    },
+    {
+        method: "GET",
+        path: "/thumbs/{path*}",
+        handler: {
+            directory: {
+                path: "./files/thumbs",
+                listing: false,
+                index: false
             }
         }
     }
