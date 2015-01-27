@@ -17,7 +17,7 @@ gulp.task('open', function(){
 });
 
 gulp.task('setup', function(){
-    exec('mkdir -p ./files/thumbs ./files/tmp', function(error, stdout, stderr){
+    exec('rm -rf ./files && mkdir -p ./files/thumbs ./files/tmp', function(error, stdout, stderr){
         if(!error){
             console.log("Setup complete!");
         }
