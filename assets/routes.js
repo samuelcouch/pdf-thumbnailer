@@ -1,7 +1,7 @@
 var Joi             = require('joi');
 var uploadHandler   = require('./new').uploadHandler;
 
-//create a routes array to pass the server.
+//create an array of routes to pass the server.
 routes = [
     {
         //entry point
@@ -22,6 +22,13 @@ routes = [
                 allow: 'multipart/form-data'
             },
             //validates that the file uploaded is a pdf
+            /*
+                Validates that:
+                *The payload has a key named  `file`, of type object with unknown keys
+                    * `file` is an object with unknown keys -- including one key called `hapi`
+                        * `hapi` is an object with unknown keys
+                            * filename is a string ending in .pdf/PDF
+            */
             validate: {
                 payload: {
                     file: Joi.object({
@@ -34,6 +41,7 @@ routes = [
         }
     },
     {
+        //Expose /public/ to the world
         method: "GET",
         path: "/public/{path*}",
         handler: {
@@ -45,6 +53,8 @@ routes = [
         }
     },
     {
+        //expose /files/thumbs to the world
+        //This allows the caller to access their thumbnails
         method: "GET",
         path: "/thumbs/{path*}",
         handler: {

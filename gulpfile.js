@@ -16,6 +16,8 @@ gulp.task('open', function(){
     return;
 });
 
+//Establishes and cleans the neccesary directories for our service to run
+//Doing this avoids `directory does not exist` errors later one
 gulp.task('setup', function(){
     exec('rm -rf ./files && mkdir -p ./files/thumbs ./files/tmp', function(error, stdout, stderr){
         if(!error){
