@@ -25,4 +25,4 @@ Other packages used:
 1. `npm install`
   - Installs all of our dependencies
 1. `gulp`
-  - Runs the default gulp task, which is to start our server, watch our files updates and restart after changes
+  - Runs the default gulp task, which is to start our server, watch our files for updates and restart after changes
