@@ -2,6 +2,13 @@ var exec       = require('child_process').exec;
 var fs          = require('fs');
 var path        = require('path');
 
+/*
+    This will be the main handler for our uploaded PDFs. 
+
+    Since this is a very general one-off use case it made more sense to avoid 
+    splitting into a more modular codebase and instead writing it as a single function.
+*/
+
 function uploadHandler(request, reply){
     var data = request.payload;
     //normalize the path so we don't have any issues later on
@@ -20,6 +27,8 @@ function uploadHandler(request, reply){
                     * The flags tell imagemagick how we'd like our png thumbnails created
                         -- These options were chosen with quality in mind
                     * tell it where to place our thumbnails
+                        --in general it's probably a bad idea to choose such a generic naming scheme;
+                          in production there would be issues with files of the same name.
             */
             var conversion = './files/tmp/'+base+'.pdf -density 300 -quality 100 -sharpen 0x1.0 ./files/thumbs/'
                              +base+'_thumb_%d.png';
@@ -63,17 +72,17 @@ function uploadHandler(request, reply){
                         else{
                             reply("Error: Something went wrong on our end, sorry about that.");
                         }  
-                    })
+                    });
                 }
                 else{
                     reply("Error: Unable to create thumbnails from that document, sorry about that.");
                 }
-            })
+            });
         }
         else{
             reply("Error: Something went wrong with that file, please try again.");
         }
-    })
+    });
 }
 
 exports.uploadHandler = uploadHandler;
