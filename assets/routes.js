@@ -1,5 +1,4 @@
 var Joi             = require('joi');
-var spawn           = require('child_process').spawn;
 var uploadHandler   = require('./new').uploadHandler;
 
 //create a routes array to pass the server.

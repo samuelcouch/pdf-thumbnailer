@@ -6,13 +6,13 @@ var path        = require('path');
 function uploadHandler(request, reply){
     var data = request.payload; //grab the data object
     //normalize the path so we don't have any issues
-    var pdfPath = path.normalize(__dirname + '/../files/tmp/'+data.file.hapi.filename);
+    var pdfPath = path.normalize(__dirname + '/../files/tmp/'+escape(data.file.hapi.filename));
     var tfile = fs.createWriteStream(pdfPath);
     data.file.pipe(tfile);
     data.file.on('end', function(error){
         if(!error){
-            var base = data.file.hapi.filename.replace(/.(pdf|PDF)$/g, ''); //get rid of the file extension
-            var conversionOps = './files/tmp/'+data.file.hapi.filename+' -density 300 -quality 100 -sharpen 0x1.0 ./files/thumbs/'+base+'_thumb_%d.png'
+            var base = data.file.hapi.filename.replace(/.(pdf|PDF)$/g, '').replace(/\s/g, '\\ '); //get rid of the file extension
+            var conversionOps = './files/tmp/'+data.file.hapi.filename.replace(/\s/g, '\\ ')+' -density 300 -quality 100 -sharpen 0x1.0 ./files/thumbs/'+base+'_thumb_%d.png'
             exec('convert ' + conversionOps, function(error, stdout, stderr){
                 if(!error){
                     exec("ls ./files/thumbs | grep " + base, function(error, stdout, stderr){
