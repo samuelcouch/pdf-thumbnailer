@@ -21,8 +21,8 @@ Other packages used:
 
 ##Usage
 1. `gulp setup`
-  - This creates the directories necesary for file storage
+  - This creates and cleans the directories necesary for file storage
 1. `npm install`
   - Installs all of our dependencies
 1. `gulp`
-  - Runs the default gulp task, which is to watch our files and reload after changes
+  - Runs the default gulp task, which is to start our server, watch our files updates and restart after changes
