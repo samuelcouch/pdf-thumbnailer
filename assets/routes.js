@@ -1,5 +1,5 @@
 var Joi             = require('joi');
-var uploadHandler   = require('./new').uploadHandler;
+var uploadHandler   = require('./utils').uploadHandler;
 
 //create an array of routes to pass the server.
 routes = [
@@ -21,7 +21,6 @@ routes = [
                 parse: true,
                 allow: 'multipart/form-data'
             },
-            //validates that the file uploaded is a pdf
             /*
                 Validates that:
                 *The payload has a key named  `file`, of type object with unknown keys
